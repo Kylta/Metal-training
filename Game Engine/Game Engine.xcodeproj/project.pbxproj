@@ -15,6 +15,7 @@
 		468DC75D242A5A7800EDC0ED /* Game_EngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468DC75C242A5A7800EDC0ED /* Game_EngineUITests.swift */; };
 		468DC76C242A5D8C00EDC0ED /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468DC76B242A5D8C00EDC0ED /* GameView.swift */; };
 		468DC76E242A627000EDC0ED /* MyShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 468DC76D242A627000EDC0ED /* MyShader.metal */; };
+		468DC770242A67F800EDC0ED /* MetalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468DC76F242A67F800EDC0ED /* MetalTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		468DC75E242A5A7800EDC0ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		468DC76B242A5D8C00EDC0ED /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		468DC76D242A627000EDC0ED /* MyShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MyShader.metal; sourceTree = "<group>"; };
+		468DC76F242A67F800EDC0ED /* MetalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				468DC76B242A5D8C00EDC0ED /* GameView.swift */,
+				468DC76F242A67F800EDC0ED /* MetalTypes.swift */,
 				468DC76D242A627000EDC0ED /* MyShader.metal */,
 				468DC744242A5A7800EDC0ED /* Main.storyboard */,
 				468DC76A242A5BD200EDC0ED /* Supported Files */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				468DC770242A67F800EDC0ED /* MetalTypes.swift in Sources */,
 				468DC76E242A627000EDC0ED /* MyShader.metal in Sources */,
 				468DC73C242A5A7600EDC0ED /* AppDelegate.swift in Sources */,
 				468DC76C242A5D8C00EDC0ED /* GameView.swift in Sources */,

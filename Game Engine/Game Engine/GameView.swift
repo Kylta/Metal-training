@@ -12,7 +12,15 @@ class GameView: MTKView {
     
     private var commandQueue: MTLCommandQueue!
     private var renderPipelineState: MTLRenderPipelineState!
-
+    
+    let vertices: [float3] = [
+        float3(0, 1, 0),        // Top middle
+        float3(-1, -1, 0),      // Bot left
+        float3(1, -1, 0)       // Bot right
+    ]
+    
+    var vertexBuffer: MTLBuffer!
+    
     required init(coder: NSCoder) {
         super.init(coder: coder)
         
@@ -21,7 +29,7 @@ class GameView: MTKView {
         self.colorPixelFormat = .bgra8Unorm                             // default: bgra8Unorm
         self.commandQueue = device?.makeCommandQueue()
         createRenderPipelineState()
-        
+        createBuffers()
     }
     
     func createRenderPipelineState() {
@@ -37,15 +45,19 @@ class GameView: MTKView {
         self.renderPipelineState = try! device?.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
     }
     
+    func createBuffers() {
+        self.vertexBuffer = device?.makeBuffer(bytes: vertices, length: MemoryLayout<float3>.stride * vertices.count, options: [])
+    }
+    
     override func draw(_ dirtyRect: NSRect) {
         guard let drawable = self.currentDrawable, let renderPassDescriptor = self.currentRenderPassDescriptor else { return }
         
         let commandBuffer = commandQueue.makeCommandBuffer()
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
-        
         renderCommandEncoder?.setRenderPipelineState(self.renderPipelineState)
         
-        // Send info to renderCommandEncoder
+        renderCommandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
         
         renderCommandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
