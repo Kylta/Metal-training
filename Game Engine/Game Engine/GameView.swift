@@ -10,14 +10,15 @@ import MetalKit
 
 class GameView: MTKView {
     
+    struct Vertex {
+        var position: float3
+        var color: float4
+    }
+    
     private var commandQueue: MTLCommandQueue!
     private var renderPipelineState: MTLRenderPipelineState!
     
-    let vertices: [float3] = [
-        float3(0, 1, 0),        // Top middle
-        float3(-1, -1, 0),      // Bot left
-        float3(1, -1, 0)       // Bot right
-    ]
+    var vertices: [Vertex] = []
     
     var vertexBuffer: MTLBuffer!
     
@@ -29,6 +30,7 @@ class GameView: MTKView {
         self.colorPixelFormat = .bgra8Unorm                             // default: bgra8Unorm
         self.commandQueue = device?.makeCommandQueue()
         createRenderPipelineState()
+        createVertices()
         createBuffers()
     }
     
@@ -46,7 +48,15 @@ class GameView: MTKView {
     }
     
     func createBuffers() {
-        self.vertexBuffer = device?.makeBuffer(bytes: vertices, length: MemoryLayout<float3>.stride * vertices.count, options: [])
+        self.vertexBuffer = device?.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
+    }
+    
+    func createVertices() {
+        self.vertices = [
+            Vertex(position: float3(0, 1, 0), color: float4(1, 0, 0, 1)),       // Top midle    red
+            Vertex(position: float3(-1, -1, 0), color: float4(0, 1, 0, 1)),     // Bot left     green
+            Vertex(position: float3(1, -1, 0), color: float4(0, 0, 1, 1))       // Bot right    blue
+        ]
     }
     
     override func draw(_ dirtyRect: NSRect) {
