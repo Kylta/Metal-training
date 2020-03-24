@@ -103,8 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				468DC76B242A5D8C00EDC0ED /* GameView.swift */,
-				468DC76F242A67F800EDC0ED /* MetalTypes.swift */,
 				468DC76D242A627000EDC0ED /* MyShader.metal */,
+				468DC76F242A67F800EDC0ED /* MetalTypes.swift */,
 				468DC744242A5A7800EDC0ED /* Main.storyboard */,
 				468DC76A242A5BD200EDC0ED /* Supported Files */,
 			);
